@@ -48,7 +48,6 @@
   },
 
   "addUser": {
-    "id": 5,
     "name": "Roni",
     "email": "skeleton-roni@gmail.com",
     "password": "skeleton"
@@ -66,5 +65,9 @@
     "name": "Sikiwil",
     "password": "12345667",
     "email": "sikiwil@gmail.com"
+  },
+
+  "wrongUpdateUser": {
+    "detail": "User not found"
   }
 }

@@ -8,5 +8,6 @@
 
   "addUser": "/users",
   "deleteUser": "/users/5",
-  "updateUser": "/users/4"
+  "updateUser": "/users/4",
+  "wrongUpdateUser": "/users/9999"
 }

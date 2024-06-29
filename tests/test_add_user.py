@@ -13,7 +13,8 @@ class TestPytestAddUser:
     post_api = env_config["addUser"]
     get_request_data = env_request_data["addUser"]
     get_response_data = env_response_data["addUser"]
-    header=env_config["headers"]
+    header = env_config["headers"]
     response = requests.post(host + post_api, headers=header, json=get_request_data)
     assert response.status_code == 200
-    assert response.json() == get_response_data
+    assert get_response_data.items() <= response.json().items()
+    cleanup_add_user.append(response.json()['id'])

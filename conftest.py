@@ -28,15 +28,17 @@ def env_response_data(request):
 
 @pytest.fixture(scope="session")
 def cleanup_add_user(env_config, env_request_data, env_response_data):
-  yield
-  host = env_config["host"]
-  delete_api = env_config["deleteUser"]
-  get_request_data = env_request_data["deleteUser"]
-  get_response_data = env_response_data["deleteUser"]
-  header=env_config["headers"]
-  response = requests.delete(host + delete_api, headers=header, json=get_request_data)
-  assert response.status_code == 200
-  assert response.json() == get_response_data
+  row_ids = []
+  yield row_ids
+  for row_id in row_ids:
+    host = env_config["host"]
+    delete_api = f"/users/{row_id}"
+    get_request_data = env_request_data["deleteUser"]
+    get_response_data = env_response_data["deleteUser"]
+    header=env_config["headers"]
+    response = requests.delete(host + delete_api, headers=header, json=get_request_data)
+    assert response.status_code == 200
+    assert response.json() == get_response_data
 
 @pytest.fixture(scope="session")
 def cleanup_update_user(env_config, env_request_data, env_response_data):
