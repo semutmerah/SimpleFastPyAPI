@@ -1,3 +1,4 @@
+import math
 import allure
 import requests
 
@@ -17,4 +18,6 @@ class TestPytestAddUser:
     response = requests.post(host + post_api, headers=header, json=get_request_data)
     assert response.status_code == 200
     assert get_response_data.items() <= response.json().items()
+    assert 'id' in response.json()
+    assert int(math.log10(response.json()['id']))+1 >= 1
     cleanup_add_user.append(response.json()['id'])
