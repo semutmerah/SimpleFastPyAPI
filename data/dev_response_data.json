@@ -57,6 +57,10 @@
     "message": "User deleted successfully"
   },
 
+  "notFoundDeleteUser": {
+    "detail": "User not found"
+  },
+
   "updateUser": {
     "message": "User updated successfully"
   },
