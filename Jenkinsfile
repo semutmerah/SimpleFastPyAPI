@@ -4,17 +4,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                pipenv install
+                pipenv --python /usr/bin/python3 install
+            }
+        }
+        stage('Dev Deploy') {
+            steps {
+                pipenv run uvicorn main:app --reload&
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                pipenv run pytest tests
             }
         }
     }
